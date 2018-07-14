@@ -23,6 +23,9 @@ COPY ./static         /app/static
 COPY ./store          /app/store
 COPY ./nuxt.config.js /app/nuxt.config.js
 
+COPY ./modules        /app/modules
+COPY ./tsconfig.json  /app/tsconfig
+
 CMD ["npm", "run", "dev"]
 
 EXPOSE 3000
