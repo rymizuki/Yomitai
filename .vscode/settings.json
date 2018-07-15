@@ -6,6 +6,7 @@
     "nuxtjs",
     "fontawesome",
     "fortawesome",
-    "webfonts"
+    "webfonts",
+    "apac"
   ]
 }
