@@ -10,11 +10,24 @@ services:
       - 50200:3000
     volumes:
       - ./client:/app
-      - /app/node_modules
     environment:
       - HOST=0.0.0.0
       - API_HOST=0.0.0.0
       - API_PORT=3000
+    command: ["npm", "run", "dev"]
+    stdin_open: true
+    tty: true
+
+  api:
+    container_name: api
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    ports:
+      - 50100:3000
+    volumes:
+      - ./api:/app
+    environment: []
     command: ["npm", "run", "dev"]
     stdin_open: true
     tty: true

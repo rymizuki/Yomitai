@@ -1,0 +1,26 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "Nuxt.js project",
+  "author": "mizuki_r <ry.mizuki@gmail.com>",
+  "main": "index.js",
+  "private": true,
+  "dependencies": {
+    "koa": "^2.5.2",
+    "koa-body-parser": "^1.1.2",
+    "koa-bodyparser": "^4.2.1",
+    "koa-logger": "^3.2.0",
+    "koa-router": "^7.4.0"
+  },
+  "devDependencies": {
+    "@types/koa": "^2.0.46",
+    "@types/koa-bodyparser": "^5.0.1",
+    "@types/koa-logger": "^3.1.0",
+    "@types/koa-router": "^7.0.30",
+    "ts-node": "^7.0.0",
+    "typescript": "^2.9.2"
+  },
+  "scripts": {
+    "dev": "ts-node src/app.ts"
+  }
+}
