@@ -23,6 +23,7 @@ module.exports = {
   */
   modules: [
     '@nuxtjs/axios',
+    ['@nuxtjs/google-tag-manager', { id: 'GTM-MTPDTRV' }],
     'bootstrap-vue/nuxt',
     '~modules/typescript.js',
   ],
