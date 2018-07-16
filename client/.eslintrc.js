@@ -21,5 +21,6 @@ module.exports = {
   // add your custom rules here
   rules: {
     semi: 'off',
+    "no-console": ["warn", { allow: ["warn", "error"]}]
   }
 }

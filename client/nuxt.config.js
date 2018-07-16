@@ -21,7 +21,14 @@ module.exports = {
   ** Modules
   */
   modules: [
+    '@nuxtjs/axios',
+    'bootstrap-vue/nuxt',
     '~modules/typescript.js',
+  ],
+  /*
+  ** Plugins
+  */
+  plugins: [
   ],
   /*
   ** Build configuration
@@ -40,5 +47,8 @@ module.exports = {
         })
       }
     }
+  },
+  axios: {
+    browserBaseURL: '/',
   },
 }

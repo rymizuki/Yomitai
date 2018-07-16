@@ -1,13 +1,20 @@
 version: '3'
 
 services:
+  gateway:
+    build:
+      context: ./gateway
+      dockerfile: Dockerfile
+    ports:
+      - 50200:80
+    restart: always
+
   client:
     container_name: client
     build:
       context: ./client
       dockerfile: Dockerfile
-    ports:
-      - 50200:3000
+    ports: []
     volumes:
       - ./client:/app
     environment:
@@ -23,8 +30,7 @@ services:
     build:
       context: ./api
       dockerfile: Dockerfile
-    ports:
-      - 50100:3000
+    ports: []
     volumes:
       - ./api:/app
     env_file: .env

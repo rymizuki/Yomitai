@@ -1,64 +1,99 @@
-<template>
-  <section class="container">
-    <div>
-      <app-logo/>
-      <h1 class="title">
-        client
-      </h1>
-      <h2 class="subtitle">
-        Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
-      </div>
-    </div>
-  </section>
+<template lang="pug">
+  b-container
+    b-row
+      b-col
+        b-form(
+          inline,
+          @submit.prevent="onSubmit",
+          @reset="onReset",
+        )
+          legend 検索
+          b-form-input.mb-2.mr-sm-2.mb-sm-0(
+            v-model="input.keyword"
+            type="text",
+            required,
+          )
+          b-form-radio-group.mb-2.mr-sm-2.mb-sm-0(
+            v-model="input.field"
+            buttons,
+            button-variant="outline-primary",
+            size="small",
+            :options="[ { text: 'タイトル', value: 'title', }, { text: '作者', value: 'author', }, ]"
+          )
+          b-button(
+            type="submit",
+            variant="primary",
+          ) Search
+    b-row()
+      b-col
+        b-alert(
+          variant="danger",
+          dismissible,
+          :show="error",
+        )
+          h4.alert-heading Error
+          p {{error}}
+    b-row(v-if="books.length")
+      b-col
+        b-media(
+          v-for="book in books",
+          :key="book.title"
+        )
+          h5.mt-0 {{book.title}}
+          p
+            time {{book.publicationDate}}
+            br
+            span.author(
+              v-for="(author, index) in book.author",
+              :key="index"
+              ) {{author}}
+          p
+            b-button(
+              :href="book.url"
+              target="_blank"
+            ) Amazonで購入
 </template>
 
 <script>
-import AppLogo from '~/components/AppLogo.vue'
-
 export default {
   components: {
-    AppLogo
+  },
+  data () {
+    return {
+      input: {
+        field: 'title',
+        keyword: '',
+      },
+    }
+  },
+  computed: {
+    error () {
+      return this.$store.getters['books/getError']()
+    },
+    books () {
+      return this.$store.getters['books/getRows']() || []
+    }
+  },
+  methods: {
+    onSubmit () {
+      this.$store.dispatch('books/search', {
+        field: this.input.field,
+        keyword: this.input.keyword,
+      })
+    },
+    onReset () {
+    }
   }
 }
 </script>
 
-<style>
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; /* 1 */
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+<style lang="stylus" scoped>
+.author {
+  &:not(:last-child) {
+    &::after {
+      padding-right: 4px;
+      content ','
+    }
+  }
 }
 </style>
