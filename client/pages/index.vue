@@ -18,7 +18,7 @@
             buttons,
             button-variant="outline-primary",
             size="small",
-            :options="[ { text: 'タイトル', value: 'title', }, { text: '作者', value: 'author', }, ]"
+            :options="[ { text: 'すべて', value: 'any' }, { text: 'タイトル', value: 'title', }, { text: '作者', value: 'author', }, ]"
           )
           b-button(
             type="submit",
@@ -61,7 +61,7 @@ export default {
   data () {
     return {
       input: {
-        field: 'title',
+        field: 'any',
         keyword: '',
       },
     }
