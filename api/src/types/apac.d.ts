@@ -16,6 +16,7 @@ declare module 'apac' {
   type TOperationParams = {
     SearchIndex: 'Books',
     ResponseGroup?: string,
+    Sort?: string,
     Power?: string,
   }
 

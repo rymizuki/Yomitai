@@ -30,6 +30,7 @@ export class APACClient {
     return await this.helper.execute('ItemSearch', {
       SearchIndex: 'Books',
       ResponseGroup: 'ItemAttributes',
+      Sort: 'daterank',
       Power: map(params, (value: string, key: string) => {
         return `${ key }:${ value }`
       }).join(' and '),
