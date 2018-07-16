@@ -2,11 +2,12 @@ version: '3'
 
 services:
   gateway:
+    container_name: yomitai_gateway
     build:
       context: ./gateway
       dockerfile: Dockerfile
     ports:
-      - 50200:80
+      - 50300:80
     restart: always
 
   client:
@@ -38,3 +39,8 @@ services:
     command: ["npm", "run", "dev"]
     stdin_open: true
     tty: true
+
+networks:
+  default:
+    external:
+      name: yomitai
