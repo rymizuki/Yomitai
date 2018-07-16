@@ -1,6 +1,6 @@
 import { IBooksRepository } from "../repositories/books";
 
-export type TBookFinderCategory = 'author' | 'title'
+export type TBookFinderCategory = 'any' | 'author' | 'title'
 export type TBook = {
   title: string,
   author: Array<string>,
@@ -20,7 +20,7 @@ export class BookFinder {
     } else if (category == 'title') {
       return this.booksRepository.searchByTitle(keyword)
     } else {
-      throw new Error(`Not exists support category "${ category }"`)
+      return this.booksRepository.search(keyword)
     }
   }
 }

@@ -15,6 +15,9 @@ export class BooksRepository implements IBooksRepository {
       accessSecretKey,
     })
   }
+  async search (keyword: string): Promise<TBooks> {
+    return await this.client.searchBooks({ keyword })
+  }
   async searchByAuthor (keyword: string): Promise<TBooks> {
     return await this.client.searchBooks({
       author: keyword,

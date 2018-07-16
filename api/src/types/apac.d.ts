@@ -17,6 +17,7 @@ declare module 'apac' {
     SearchIndex: 'Books',
     ResponseGroup?: string,
     Sort?: string,
+    Keywords?: string,
     Power?: string,
   }
 

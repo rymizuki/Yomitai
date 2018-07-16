@@ -1,5 +1,5 @@
-import { OperationHelper } from 'apac'
-import { defaults, map, get, isArray } from 'lodash'
+import { OperationHelper, TOperationParams } from 'apac'
+import { map, get, isArray } from 'lodash'
 import { TBook, TBooks } from '../domain/entities/book-finder';
 
 export type TAPACClientConfig = {
@@ -11,6 +11,7 @@ export type TAPACClientConfig = {
 export type TAPACClientSearchBooksParams = {
   author?: string,
   title?: string,
+  keyword?: string,
 }
 
 export class APACClient {
@@ -29,18 +30,26 @@ export class APACClient {
   }
   async searchBooks (args: TAPACClientSearchBooksParams) {
     // TODO: この辺は外部から呼び出せると嬉しい
-    const params = defaults(args, {
-      title: 'not 月刊',
+    const params = {
       binding: 'kindle',
-    })
-    return await this.helper.execute('ItemSearch', {
+      title: `not 月刊`,
+      author: args.author,
+    }
+    if (args.title) params.title = `(${ args.title } and ${ params.title }`
+    
+    const query: TOperationParams = {
       SearchIndex: 'Books',
       ResponseGroup: 'ItemAttributes',
       Sort: 'daterank',
       Power: map(params, (value: string, key: string) => {
-        return `${ key }:${ value }`
+        return value ? `${ key }:${ value }` : ''
       }).join(' and '),
-    })
+    }
+    if (args.keyword) query.Keywords = args.keyword
+
+    console.log('query', query)
+
+    return await this.helper.execute('ItemSearch', query)
       .then((res) => {
         if (get(res, 'result.ItemSearchResponse.Items.Item')) {
           // console.log(res.result.ItemSearchResponse.Items.Item)
