@@ -8,10 +8,11 @@ export type TAPACClientConfig = {
   associateTag: string,
 }
 
-export type TAPACClientSearchBooksParams = {
+export interface TAPACClientSearchBooksParams {
   author?: string,
   title?: string,
   keyword?: string,
+  period?: string,
 }
 
 export class APACClient {
@@ -34,6 +35,7 @@ export class APACClient {
       binding: 'kindle',
       title: `not 月刊`,
       author: args.author,
+      pubdate: args.period ? `during ${ args.period }` : undefined,
     }
     if (args.title) params.title = `(${ args.title } and ${ params.title }`
     

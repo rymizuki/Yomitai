@@ -20,10 +20,18 @@
             size="small",
             :options="[ { text: 'すべて', value: 'any' }, { text: 'タイトル', value: 'title', }, { text: '作者', value: 'author', }, ]"
           )
-          b-button(
-            type="submit",
-            variant="primary",
-          ) Search
+          b-form-radio-group.mb-2.mr-sm-2.mb-sm-0(
+            v-model="input.period"
+            buttons,
+            button-variant="outline-primary",
+            size="small",
+            :options="[ { text: '全期間', value: 'all' }, { text: '今月', value: 'this_month', }, { text: '今年', value: 'this_year' } ]"
+          )
+          b-form-group.mb-2.mr-sm-2.mb-sm-0
+            b-button(
+              type="submit",
+              variant="primary",
+            ) Search
     b-row()
       b-col
         b-alert(
@@ -63,6 +71,7 @@ export default {
       input: {
         field: 'any',
         keyword: '',
+        period: 'all',
       },
     }
   },
@@ -79,6 +88,7 @@ export default {
       this.$store.dispatch('books/search', {
         field: this.input.field,
         keyword: this.input.keyword,
+        period: this.input.period,
       })
     },
     onReset () {

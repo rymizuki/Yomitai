@@ -1,4 +1,5 @@
-import { IBooksRepository } from "../repositories/books";
+import { IBooksRepository } from "../repositories/books"
+import { TPeriodCategory } from "../../interface/period";
 
 export type TBookFinderCategory = 'any' | 'author' | 'title'
 export type TBook = {
@@ -14,13 +15,13 @@ export class BookFinder {
   constructor (booksRepository: IBooksRepository) {
     this.booksRepository = booksRepository
   }
-  async find (category: TBookFinderCategory, keyword: string) {
+  async find (category: TBookFinderCategory, keyword: string, period_category: TPeriodCategory) {
     if (category == 'author') {
-      return this.booksRepository.searchByAuthor(keyword)
+      return this.booksRepository.searchByAuthor(keyword, period_category)
     } else if (category == 'title') {
-      return this.booksRepository.searchByTitle(keyword)
+      return this.booksRepository.searchByTitle(keyword, period_category)
     } else {
-      return this.booksRepository.search(keyword)
+      return this.booksRepository.search(keyword, period_category)
     }
   }
 }

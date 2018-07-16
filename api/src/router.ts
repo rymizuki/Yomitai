@@ -9,11 +9,11 @@ router.get('/api/', (ctx) => {
 })
 
 router.get('/api/books', async (ctx) => {
-  const { field, keyword } = ctx.query
+  const { field, keyword, period } = ctx.query
 
   try {
     const finder = new BookFinder(new BooksRepository())
-    const books = await finder.find(field, keyword)
+    const books = await finder.find(field, keyword, period)
 
     ctx.body = {
       rows: books

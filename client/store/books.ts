@@ -3,8 +3,9 @@ import { GetterTree, MutationTree, ActionTree } from 'vuex'
 import { TRootState, TBooksState, TBookState } from 'state'
 
 export type TBooksSearchParam = {
-  field: 'author' | 'title',
   keyword: string,
+  field: 'author' | 'title',
+  period: 'all' | 'this_month' | 'this_year'
 }
 
 export const state: () => TBooksState = () => ({
@@ -32,9 +33,9 @@ export const mutations: MutationTree<TBooksState> = {
 }
 
 export const actions: ActionTree<TBooksState, TRootState> = {
-  async search ({ commit }, { field, keyword }: TBooksSearchParam) {
+  async search ({ commit }, { field, keyword, period }: TBooksSearchParam) {
     console.log(field, keyword)
-    const query = qs.stringify({ field, keyword })
+    const query = qs.stringify({ field, keyword, period })
     const { data } = await this.$axios.get(`/api/books?${ query }`)
     if (data.rows) {
       commit('receive', data.rows)
