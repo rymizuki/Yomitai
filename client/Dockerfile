@@ -21,10 +21,14 @@ COPY ./pages          /app/pages
 COPY ./plugins        /app/plugins
 COPY ./static         /app/static
 COPY ./store          /app/store
+COPY ./.eslintrc.js   /app/.eslintrc.js
 COPY ./nuxt.config.js /app/nuxt.config.js
 
 COPY ./modules        /app/modules
-COPY ./tsconfig.json  /app/tsconfig
+COPY ./types          /app/types
+COPY ./tsconfig.json  /app/tsconfig.json
+
+RUN npm run build
 
 CMD ["npm", "run", "dev"]
 
