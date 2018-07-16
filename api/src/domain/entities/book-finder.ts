@@ -17,6 +17,8 @@ export class BookFinder {
   async find (category: TBookFinderCategory, keyword: string) {
     if (category == 'author') {
       return this.booksRepository.searchByAuthor(keyword)
+    } else if (category == 'title') {
+      return this.booksRepository.searchByTitle(keyword)
     } else {
       throw new Error(`Not exists support category "${ category }"`)
     }

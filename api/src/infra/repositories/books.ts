@@ -20,4 +20,9 @@ export class BooksRepository implements IBooksRepository {
       author: keyword,
     })
   }
+  async searchByTitle (keyword: string): Promise<TBooks> {
+    return await this.client.searchBooks({
+      title: keyword,
+    })
+  }
 }

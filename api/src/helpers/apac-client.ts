@@ -8,6 +8,11 @@ export type TAPACClientConfig = {
   associateTag: string,
 }
 
+export type TAPACClientSearchBooksParams = {
+  author?: string,
+  title?: string,
+}
+
 export class APACClient {
   private helper: OperationHelper
   constructor ({ accessKeyId, accessSecretKey, associateTag }: TAPACClientConfig) {
@@ -22,7 +27,8 @@ export class APACClient {
       }
     }, { locale: 'JP' })
   }
-  async searchBooks (args: { author?: string }) {
+  async searchBooks (args: TAPACClientSearchBooksParams) {
+    // TODO: この辺は外部から呼び出せると嬉しい
     const params = defaults(args, {
       title: 'not 月刊',
       binding: 'kindle',
