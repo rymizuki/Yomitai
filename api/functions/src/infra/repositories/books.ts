@@ -1,4 +1,4 @@
-import moment from 'moment'
+import * as moment from 'moment'
 import { IBooksRepository, TBooksRepositoryParamField } from '../../domain/repositories/books';
 import { TBooks } from '../../domain/entities/book-finder';
 import { APACClient, TAPACClientSearchBooksParams } from '../../helpers/apac-client';

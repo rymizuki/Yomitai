@@ -1,15 +1,15 @@
-import express from 'express'
+import { Router } from 'express'
 
 import { BookFinder } from './domain/entities/book-finder';
 import { BooksRepository } from './infra/repositories/books';
 
-const router = express.Router()
+const router = Router()
 
-router.get('/api/', (_req, res) => {
+router.get('/', (_req, res) => {
   res.json({ message: 'hello world'})
 })
 
-router.get('/api/books', async (req, res) => {
+router.get('/books', async (req, res) => {
   const { field, keyword, period } = req.query
 
   try {

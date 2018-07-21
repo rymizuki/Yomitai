@@ -31,12 +31,13 @@ services:
     build:
       context: ./api
       dockerfile: Dockerfile
-    ports: []
+    ports:
+      - 9005:9005 # for firebase login
     volumes:
       - ./api:/app
     env_file: .env
     environment: []
-    command: ["npm", "run", "dev"]
+    command: ["firebase", "serve", "--port", "3000", "--only", "functions"]
     stdin_open: true
     tty: true
 

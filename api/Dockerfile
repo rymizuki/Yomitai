@@ -1,4 +1,4 @@
-FROM node:10.5.0-alpine
+FROM node:6.14.0-alpine
 
 RUN apk update \
  && apk --no-cache --update add tzdata \
@@ -6,17 +6,21 @@ RUN apk update \
  && apk del tzdata \
  && rm -fr /var/cache/apk/*
 
+RUN npm install -g yarn
+RUN npm install -g firebase-tools
+
 WORKDIR /app
 
-COPY ./package.json       /app/package.json
-COPY ./yarn.lock          /app/yarn.lock
+COPY ./functions /app/functions
+COPY ./.firebaserc /app/.firebaserc
+COPY ./firebase.json /app/firebase.json
 
-COPY ./src                /app/src
-COPY ./tsconfig.json      /app/tsconfig.json
+WORKDIR /app/functions
 
-RUN npm install -g yarn
 RUN yarn install
 
-CMD ["yarn", "dev"]
+WORKDIR /app
+
+CMD ["firebase", "serve", "--port", "3000", "--only", "functions"]
 
 EXPOSE 3000
