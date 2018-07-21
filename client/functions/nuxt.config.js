@@ -1,4 +1,7 @@
 module.exports = {
+  mode: 'ssr',
+  srcDir: './src',
+  buildDir: './functions/nuxt',
   /*
   ** Headers of the page
   */
@@ -50,6 +53,7 @@ module.exports = {
       }
     }
   },
+
   axios: {
     browserBaseURL: '/',
   },

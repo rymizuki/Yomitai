@@ -1,0 +1,172 @@
+[debug] [2018-07-21T15:57:46.626Z] ----------------------------------------------------------------------
+[debug] [2018-07-21T15:57:46.633Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve --port 3000 --only functions
+[debug] [2018-07-21T15:57:46.633Z] CLI Version:   3.19.3
+[debug] [2018-07-21T15:57:46.634Z] Platform:      linux
+[debug] [2018-07-21T15:57:46.634Z] Node Version:  v6.14.0
+[debug] [2018-07-21T15:57:46.634Z] Time:          Sun Jul 22 2018 00:57:46 GMT+0900 (JST)
+[debug] [2018-07-21T15:57:46.634Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-07-21T15:57:46.670Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-07-21T15:57:46.671Z] > authorizing via FIREBASE_TOKEN environment variable
+[debug] [2018-07-21T15:57:46.674Z] > refreshing access token with scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-07-21T15:57:46.675Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/ZMOKIBiKuvDSDsxvUwfx7Os09cM6334V4uBDBhai04Y',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email openid https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase https://www.googleapis.com/auth/cloud-platform' } 
+ Sun Jul 22 2018 00:57:46 GMT+0900 (JST)
+[debug] [2018-07-21T15:57:46.919Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-21T15:57:46.921Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/yomitai-f4983  
+  
+ Sun Jul 22 2018 00:57:46 GMT+0900 (JST)
+[debug] [2018-07-21T15:57:48.122Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-21T15:57:48.123Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/yomitai-f4983/tokens  
+  
+ Sun Jul 22 2018 00:57:48 GMT+0900 (JST)
+[debug] [2018-07-21T15:57:48.706Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-21T15:57:48.708Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/yomitai-f4983  
+  
+ Sun Jul 22 2018 00:57:48 GMT+0900 (JST)
+[debug] [2018-07-21T15:57:49.578Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/app'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-07-21T15:57:50.993Z] Fetching environment
+[debug] [2018-07-21T15:57:50.998Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/171079383491:getServerAppConfig  
+  
+ Sun Jul 22 2018 00:57:50 GMT+0900 (JST)
+[debug] [2018-07-21T15:57:51.737Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-21T15:57:51.737Z] Starting @google-cloud/functions-emulator
+[debug] [2018-07-21T15:57:54.279Z] Parsing function triggers
+[info] ✔  functions: api: http://localhost:3000/yomitai-f4983/us-central1/api
+[debug] [2018-07-21T15:59:27.567Z] ----------------------------------------------------------------------
+[debug] [2018-07-21T15:59:27.573Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve --port 3000 --only functions
+[debug] [2018-07-21T15:59:27.574Z] CLI Version:   3.19.3
+[debug] [2018-07-21T15:59:27.574Z] Platform:      linux
+[debug] [2018-07-21T15:59:27.574Z] Node Version:  v6.14.0
+[debug] [2018-07-21T15:59:27.574Z] Time:          Sun Jul 22 2018 00:59:27 GMT+0900 (JST)
+[debug] [2018-07-21T15:59:27.574Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-07-21T15:59:27.603Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-07-21T15:59:27.604Z] > authorizing via FIREBASE_TOKEN environment variable
+[debug] [2018-07-21T15:59:27.607Z] > refreshing access token with scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-07-21T15:59:27.607Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/ZMOKIBiKuvDSDsxvUwfx7Os09cM6334V4uBDBhai04Y',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email openid https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase https://www.googleapis.com/auth/cloud-platform' } 
+ Sun Jul 22 2018 00:59:27 GMT+0900 (JST)
+[debug] [2018-07-21T15:59:27.845Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-21T15:59:27.847Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/yomitai-f4983  
+  
+ Sun Jul 22 2018 00:59:27 GMT+0900 (JST)
+[debug] [2018-07-21T15:59:28.482Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-21T15:59:28.483Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/yomitai-f4983/tokens  
+  
+ Sun Jul 22 2018 00:59:28 GMT+0900 (JST)
+[debug] [2018-07-21T15:59:29.047Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-21T15:59:29.049Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/yomitai-f4983  
+  
+ Sun Jul 22 2018 00:59:29 GMT+0900 (JST)
+[debug] [2018-07-21T15:59:29.921Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/app'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-07-21T15:59:30.682Z] Fetching environment
+[debug] [2018-07-21T15:59:30.685Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/171079383491:getServerAppConfig  
+  
+ Sun Jul 22 2018 00:59:30 GMT+0900 (JST)
+[debug] [2018-07-21T15:59:31.442Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-21T15:59:31.443Z] Starting @google-cloud/functions-emulator
+[debug] [2018-07-21T15:59:33.472Z] Parsing function triggers
+[info] ✔  functions: api: http://localhost:3000/yomitai-f4983/us-central1/api
+[debug] [2018-07-21T16:42:25.498Z] ----------------------------------------------------------------------
+[debug] [2018-07-21T16:42:25.507Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve --port 3000 --only functions
+[debug] [2018-07-21T16:42:25.508Z] CLI Version:   3.19.3
+[debug] [2018-07-21T16:42:25.508Z] Platform:      linux
+[debug] [2018-07-21T16:42:25.508Z] Node Version:  v6.14.0
+[debug] [2018-07-21T16:42:25.509Z] Time:          Sun Jul 22 2018 01:42:25 GMT+0900 (JST)
+[debug] [2018-07-21T16:42:25.510Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-07-21T16:42:25.560Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-07-21T16:42:25.561Z] > authorizing via FIREBASE_TOKEN environment variable
+[debug] [2018-07-21T16:42:25.567Z] > refreshing access token with scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-07-21T16:42:25.569Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/ZMOKIBiKuvDSDsxvUwfx7Os09cM6334V4uBDBhai04Y',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email openid https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase https://www.googleapis.com/auth/cloud-platform' } 
+ Sun Jul 22 2018 01:42:25 GMT+0900 (JST)
+[debug] [2018-07-21T16:42:26.256Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-21T16:42:26.258Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/yomitai-f4983  
+  
+ Sun Jul 22 2018 01:42:26 GMT+0900 (JST)
+[debug] [2018-07-21T16:42:27.047Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-21T16:42:27.048Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/yomitai-f4983/tokens  
+  
+ Sun Jul 22 2018 01:42:27 GMT+0900 (JST)
+[debug] [2018-07-21T16:42:27.980Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-21T16:42:27.982Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/yomitai-f4983  
+  
+ Sun Jul 22 2018 01:42:27 GMT+0900 (JST)
+[debug] [2018-07-21T16:42:28.902Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/app'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-07-21T16:42:30.326Z] Fetching environment
+[debug] [2018-07-21T16:42:30.333Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/171079383491:getServerAppConfig  
+  
+ Sun Jul 22 2018 01:42:30 GMT+0900 (JST)
+[debug] [2018-07-21T16:42:31.824Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-21T16:42:31.825Z] Starting @google-cloud/functions-emulator
+[debug] [2018-07-21T16:42:34.366Z] Parsing function triggers
+[info] ✔  functions: api: http://localhost:3000/yomitai-f4983/us-central1/api
+[debug] [2018-07-21T16:45:54.501Z] ----------------------------------------------------------------------
+[debug] [2018-07-21T16:45:54.504Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve --port 3000 --only functions
+[debug] [2018-07-21T16:45:54.505Z] CLI Version:   3.19.3
+[debug] [2018-07-21T16:45:54.505Z] Platform:      linux
+[debug] [2018-07-21T16:45:54.505Z] Node Version:  v6.14.0
+[debug] [2018-07-21T16:45:54.506Z] Time:          Sun Jul 22 2018 01:45:54 GMT+0900 (JST)
+[debug] [2018-07-21T16:45:54.506Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-07-21T16:45:54.528Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-07-21T16:45:54.529Z] > authorizing via FIREBASE_TOKEN environment variable
+[debug] [2018-07-21T16:45:54.530Z] > refreshing access token with scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-07-21T16:45:54.531Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/ZMOKIBiKuvDSDsxvUwfx7Os09cM6334V4uBDBhai04Y',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email openid https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase https://www.googleapis.com/auth/cloud-platform' } 
+ Sun Jul 22 2018 01:45:54 GMT+0900 (JST)
+[debug] [2018-07-21T16:45:54.730Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-21T16:45:54.731Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/yomitai-f4983  
+  
+ Sun Jul 22 2018 01:45:54 GMT+0900 (JST)
+[debug] [2018-07-21T16:45:55.589Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-21T16:45:55.591Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/yomitai-f4983/tokens  
+  
+ Sun Jul 22 2018 01:45:55 GMT+0900 (JST)
+[debug] [2018-07-21T16:45:56.220Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-21T16:45:56.222Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/yomitai-f4983  
+  
+ Sun Jul 22 2018 01:45:56 GMT+0900 (JST)
+[debug] [2018-07-21T16:45:57.362Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/app'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-07-21T16:45:58.766Z] Fetching environment
+[debug] [2018-07-21T16:45:58.769Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/171079383491:getServerAppConfig  
+  
+ Sun Jul 22 2018 01:45:58 GMT+0900 (JST)
+[debug] [2018-07-21T16:45:59.388Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-21T16:45:59.389Z] Starting @google-cloud/functions-emulator
+[debug] [2018-07-21T16:46:01.431Z] Parsing function triggers
+[info] ✔  functions: api: http://localhost:3000/yomitai-f4983/us-central1/api

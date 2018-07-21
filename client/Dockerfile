@@ -1,4 +1,4 @@
-FROM node:10.3.0-alpine
+FROM node:6.14.0-alpine
 
 RUN apk update \
  && apk --no-cache --update add tzdata \
@@ -6,30 +6,18 @@ RUN apk update \
  && apk del tzdata \
  && rm -fr /var/cache/apk/*
 
-WORKDIR /app
+RUN npm install -g yarn
+RUN npm install -g firebase-tools
 
-COPY ./package.json       /app/package.json
-COPY ./package-lock.json  /app/package-lock.json
+COPY ./functions      /app/functions
+COPY ./.firebaserc    /app/.firebaserc
+COPY ./firebase.json  /app/firebase.json
+
+WORKDIR /app/functions
 
 RUN npm install
-
-COPY ./assets         /app/assets
-COPY ./components     /app/components
-COPY ./layouts        /app/layouts
-COPY ./middleware     /app/middleware
-COPY ./pages          /app/pages
-COPY ./plugins        /app/plugins
-COPY ./static         /app/static
-COPY ./store          /app/store
-COPY ./.eslintrc.js   /app/.eslintrc.js
-COPY ./nuxt.config.js /app/nuxt.config.js
-
-COPY ./modules        /app/modules
-COPY ./types          /app/types
-COPY ./tsconfig.json  /app/tsconfig.json
-
 RUN npm run build
 
-CMD ["npm", "run", "dev"]
+CMD ["firebase", "serve", "--port", "3000"]
 
 EXPOSE 3000

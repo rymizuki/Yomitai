@@ -18,11 +18,12 @@ services:
     ports: []
     volumes:
       - ./client:/app
+    env_file: .env
     environment:
       - HOST=0.0.0.0
       - API_HOST=0.0.0.0
       - API_PORT=3000
-    command: ["npm", "run", "dev"]
+    command: ["firebase", "serve", "--port", "3000"]
     stdin_open: true
     tty: true
 
