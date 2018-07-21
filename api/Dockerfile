@@ -9,13 +9,14 @@ RUN apk update \
 WORKDIR /app
 
 COPY ./package.json       /app/package.json
-COPY ./package-lock.json  /app/package-lock.json
+COPY ./yarn.lock          /app/yarn.lock
 
 COPY ./src                /app/src
 COPY ./tsconfig.json      /app/tsconfig.json
 
-RUN npm install
+RUN npm install -g yarn
+RUN yarn install
 
-CMD ["npm", "run", "dev"]
+CMD ["yarn", "dev"]
 
 EXPOSE 3000
