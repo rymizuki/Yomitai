@@ -1,17 +1,18 @@
-import Koa from 'koa'
-import logger from 'koa-logger'
+import express from 'express'
+import morgan from 'morgan'
 import router from './router'
-import bodyParser from 'koa-bodyparser'
 
-const app = new Koa()
+const app = express()
 
-app.use(logger())
+app.use(morgan('dev', { immediate: true }))
 
-app.use(bodyParser())
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
-app.use(router.routes())
-app.use(router.allowedMethods())
+app.use(router)
 
-app.listen(3000)
+app.listen(3000, () => {
+  console.log('listen app server on 3000')
+})
 
-console.log('listen')
+export default app
