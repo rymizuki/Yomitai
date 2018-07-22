@@ -1,4 +1,4 @@
-import { TBooks } from '../entities/book-finder'
+import { TBooks } from '../../types'
 import { TPeriodCategory } from '../../interface/period';
 
 export type TBooksRepositoryParamPeriod = 'all' | 'this_month' | 'this_year'

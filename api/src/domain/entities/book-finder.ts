@@ -1,21 +1,6 @@
 import { IBooksRepository } from "../repositories/books"
 import { TPeriodCategory } from "../../interface/period";
-
-export type TBookFinderCategory = 'any' | 'author' | 'title'
-export type TBook = {
-  title: string,
-  author: Array<string>,
-  publicationDate: string,
-  url: string,
-  images: null | {
-    thumbnail: {
-      url: string,
-      width: number,
-      height: number,
-    }
-  }
-}
-export type TBooks = Array<TBook>
+import { TBookFinderCategory } from '../../types'
 
 export class BookFinder {
   private booksRepository: IBooksRepository

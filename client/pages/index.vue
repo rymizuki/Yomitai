@@ -73,9 +73,14 @@
                 ) {{author}}
             p
               b-button(
+                variant="primary"
                 :href="book.url"
                 target="_blank"
               ) Amazonで購入
+              b-button(
+                variant="light"
+                @click.prevent="onClickRegistrarSeries(book)"
+              ) シリーズを登録
 </template>
 
 <script>
@@ -108,6 +113,9 @@ export default {
       })
     },
     onReset () {
+    },
+    onClickRegistrarSeries(book) {
+      this.$store.dispatch('series/registrar', book)
     }
   }
 }

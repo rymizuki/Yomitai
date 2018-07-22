@@ -1,6 +1,6 @@
 import { OperationHelper, TOperationParams } from 'apac'
 import { map, get, isArray } from 'lodash'
-import { TBook, TBooks } from '../domain/entities/book-finder';
+import { TBook, TBooks } from '../types';
 
 export type TAPACClientConfig = {
   accessKeyId: string,
@@ -58,7 +58,7 @@ export class APACClient {
             res.result.ItemSearchResponse.Items.Item) {
           let items = res.result.ItemSearchResponse.Items.Item
           if (!isArray(items)) items = [ items ]
-          console.log(JSON.stringify(items, null, 2))
+          // console.log(JSON.stringify(items, null, 2))
 
           const rows: TBooks = items.map(({ DetailPageURL, ItemAttributes, ImageSets }): TBook => {
             if (!ItemAttributes) throw new Error('ItemAttribute is not defined')

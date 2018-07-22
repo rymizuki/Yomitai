@@ -1,6 +1,6 @@
 import moment from 'moment'
 import { IBooksRepository, TBooksRepositoryParamField } from '../../domain/repositories/books';
-import { TBooks } from '../../domain/entities/book-finder';
+import { TBooks } from '../../types';
 import { APACClient, TAPACClientSearchBooksParams } from '../../helpers/apac-client';
 import { TPeriodCategory } from '../../interface/period';
 
