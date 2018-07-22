@@ -41,7 +41,7 @@ export class APACClient {
     
     const query: TOperationParams = {
       SearchIndex: 'Books',
-      ResponseGroup: 'ItemAttributes',
+      ResponseGroup: 'Images,ItemAttributes',
       Sort: 'daterank',
       Power: map(params, (value: string, key: string) => {
         return value ? `${ key }:${ value }` : ''
@@ -53,23 +53,34 @@ export class APACClient {
 
     return await this.helper.execute('ItemSearch', query)
       .then((res) => {
-        if (get(res, 'result.ItemSearchResponse.Items.Item')) {
-          // console.log(res.result.ItemSearchResponse.Items.Item)
-
+        if (res.result.ItemSearchResponse &&
+            res.result.ItemSearchResponse.Items && 
+            res.result.ItemSearchResponse.Items.Item) {
           let items = res.result.ItemSearchResponse.Items.Item
           if (!isArray(items)) items = [ items ]
+          console.log(JSON.stringify(items, null, 2))
 
-          const rows: TBooks = items.map(({ DetailPageURL, ItemAttributes }: any): TBook => {
+          const rows: TBooks = items.map(({ DetailPageURL, ItemAttributes, ImageSets }): TBook => {
+            if (!ItemAttributes) throw new Error('ItemAttribute is not defined')
+
             const {
               Title,
               Author,
               PublicationDate,
             } = ItemAttributes
+
             return {
               title: Title,
               author: isArray(Author) ? Author : [Author],
               publicationDate: PublicationDate,
               url: DetailPageURL,
+              images: ImageSets ? {
+                thumbnail: {
+                  url: ImageSets.ImageSet.ThumbnailImage.URL,
+                  width: ImageSets.ImageSet.ThumbnailImage.Width._,
+                  height: ImageSets.ImageSet.ThumbnailImage.Height._,
+                }
+              } : null
             }
           })
           // console.log(rows)
@@ -78,10 +89,10 @@ export class APACClient {
           // console.log(res.result.ItemSearchResponse.Items)
           return []
         } else if (get(res, 'result.ItemSearchErrorResponse')) {
-          // console.error(JSON.stringify(res.result, null, 2))
+          console.error(JSON.stringify(res.result, null, 2))
           throw new Error(res.result.ItemSearchErrorResponse.Error.Message)
         } else {
-          throw new Error(res)
+          throw new Error('something wrong')
         }
       })
   }

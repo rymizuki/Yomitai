@@ -46,20 +46,36 @@
         b-media(
           v-for="book in books",
           :key="book.title"
+          no-body
         )
-          h5.mt-0 {{book.title}}
-          p
-            time {{book.publicationDate}}
-            br
-            span.author(
-              v-for="(author, index) in book.author",
-              :key="index"
-              ) {{author}}
-          p
-            b-button(
-              :href="book.url"
-              target="_blank"
-            ) Amazonで購入
+          b-media-aside(vertical-align="center")
+            img(
+              v-if="book.images",
+              :src="book.images.thumbnail.url",
+              :width="book.images.thumbnail.width",
+              :height="book.images.thumbnail.height",
+            )
+            b-img(
+              v-else,
+              blank,
+              blank-color="#ccc"
+              width="55",
+              height="75"
+            )
+          b-media-body.ml-3()
+            h5.mt-0 {{book.title}}
+            p
+              time {{book.publicationDate}}
+              br
+              span.author(
+                v-for="(author, index) in book.author",
+                :key="index"
+                ) {{author}}
+            p
+              b-button(
+                :href="book.url"
+                target="_blank"
+              ) Amazonで購入
 </template>
 
 <script>
