@@ -1,5 +1,6 @@
 declare module 'state' {
   export type TRootState = {
+    series?: TSeriesState
   }
 
   export type TBookState = {
@@ -12,5 +13,13 @@ declare module 'state' {
   export type TBooksState = {
     rows: TBookState[],
     error: any,
+  }
+
+  export type TSeriesState = {
+    rows: TSeries[]
+  }
+
+  export type TSeries = {
+    name: string,
   }
 }

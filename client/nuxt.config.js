@@ -50,7 +50,9 @@ module.exports = {
       }
     }
   },
+
   axios: {
+    baseURL: 'http://api:3000/',
     browserBaseURL: '/',
   },
 }

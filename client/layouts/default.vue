@@ -9,6 +9,7 @@
       b-navbar-brand(href="/") Yomitai
       b-collapse#nav_collapse(is-nav)
         b-navbar-nav
+          b-nav-item(:to="{ name: 'series' }") シリーズ
 
     b-container()
       nuxt()

@@ -7,10 +7,14 @@ export class SeriesRegistrar {
     this.seriesRepository = seriesRepository
   }
   async register (book: TBook) {
+    const name = book.title
+      .replace(/(\(|（)(.+)(\)|）)/g, '').trim() // （...）を削除
+      .replace(/[0-9]*$/, '').trim()            // 末尾の巻数を削除
+
     const series: TSeries = {
-      name: book.title
+      name
     }
-    console.log(series)
+
     return await this.seriesRepository.add(series)
   }
 }

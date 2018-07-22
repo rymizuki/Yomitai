@@ -1,6 +1,14 @@
-export const state  = () => ({})
+import { TRootState } from "state";
+import { GetterTree } from "../node_modules/vuex";
 
-export const getters = {}
+export const state: () => TRootState = () => ({})
+
+export const getters: GetterTree<TRootState, TRootState> = {
+  getSeriesList (state: TRootState) {
+    console.log(state)
+    return () => state.series ? state.series.rows : []
+  }
+}
 
 export const mutations = {}
 
