@@ -28,7 +28,7 @@ Resources:
                         Action:
                             - s3:GetObject
                         Effect: Allow
-                        Resource: !Sub "arn:aws:s3:::${YomitaStaticBucket}/*"
+                        Resource: !Sub "arn:aws:s3:::${YomitaiStaticBucket}/*"
                         Principal: '*'
 
     YomitaiFunction:
