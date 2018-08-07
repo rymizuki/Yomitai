@@ -17,14 +17,14 @@
     "baseUrl": ".",
     "allowJs": true,
     "paths": {
-      "~/": ["./"],
-      "~/assets/*": ["./assets/*"],
-      "~/components/*": ["./components/*"],
-      "~/middleware/*": ["./middleware/*"],
-      "~/pages/*": ["./pages/*"],
-      "~/plugins/*": ["./plugins/*"],
-      "~/static/*": ["./static/*"],
-      "~/store/*": ["./store/*"],
+      "~/": ["./src/nuxt"],
+      "~/assets/*": ["./src/nuxt/assets/*"],
+      "~/components/*": ["./src/nuxt/components/*"],
+      "~/middleware/*": ["./src/nuxt/middleware/*"],
+      "~/pages/*": ["./src/nuxt/pages/*"],
+      "~/plugins/*": ["./src/nuxt/plugins/*"],
+      "~/static/*": ["./src/nuxt/static/*"],
+      "~/store/*": ["./src/nuxt/store/*"],
     }
   }
 }

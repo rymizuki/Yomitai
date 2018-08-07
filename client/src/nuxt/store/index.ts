@@ -1,5 +1,5 @@
 import { TRootState } from "state";
-import { GetterTree } from "../node_modules/vuex";
+import { GetterTree } from "vuex";
 
 export const state: () => TRootState = () => ({})
 

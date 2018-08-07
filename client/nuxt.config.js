@@ -1,4 +1,6 @@
 module.exports = {
+  srcDir: './src/nuxt',
+  buildDir: './build/nuxt',
   /*
   ** Headers of the page
   */
