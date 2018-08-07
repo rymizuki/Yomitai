@@ -9,16 +9,16 @@ Globals:
 
 Resources:
 
-    YomitaiStaticBucket:
+    YomitaiAssetBucket:
         Type: AWS::S3::Bucket
         Properties:
             AccessControl: PublicRead
-            BucketName: yomitai-static
+            BucketName: yomitai-function
 
-    YomitaiStaticBucketPolicy:
+    YomitaiAssetBucketPolicy:
         Type: AWS::S3::BucketPolicy
         Properties:
-            Bucket: !Ref "YomitaiStaticBucket"
+            Bucket: !Ref "YomitaiAssetBucket"
             PolicyDocument:
                 Id: PublicRead
                 Version: '2012-10-17'
@@ -28,7 +28,7 @@ Resources:
                         Action:
                             - s3:GetObject
                         Effect: Allow
-                        Resource: !Sub "arn:aws:s3:::${YomitaiStaticBucket}/*"
+                        Resource: !Sub "arn:aws:s3:::${YomitaiAssetBucket}/*"
                         Principal: '*'
 
     YomitaiFunction:
@@ -55,7 +55,7 @@ Resources:
 Outputs:
     Assets:
       Description: "URL for website hosted on s3"
-      Value: !GetAtt YomitaiStaticBucket.Arn
+      Value: !GetAtt YomitaiAssetBucket.Arn
 
     HelloWorldFunction:
       Description: "Yomitai Lambda Function ARN"

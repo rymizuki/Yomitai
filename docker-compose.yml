@@ -8,7 +8,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - ./:/app
+      - ./:/project
     env_file: .env
     environment:
       - HOST=0.0.0.0
