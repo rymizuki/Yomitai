@@ -1,0 +1,24 @@
+#!/bin/sh
+
+SAM_SOURCE_DIR=app
+SAM_TEMPLATE_PATH=template.yml
+SAM_PACKAGED_TEMPLATE_PATH=template-packaged.yml
+SAM_S3_BUCKET=nuxt-helloworld-sam
+S3_BUCKET=nuxt-helloworld-sam-asset
+S3_SOURCE_DIR=${SAM_SOURCE_DIR}/build/nuxt/dist
+
+sam validate
+
+find $SAM_SOURCE_DIR/node_modules -mtime +10950 -exec touch {} \;
+
+sam package \
+  --template-file $SAM_TEMPLATE_PATH \
+  --output-template-file $SAM_PACKAGED_TEMPLATE_PATH \
+  --s3-bucket $SAM_S3_BUCKET
+
+sam deploy \
+  --template-file $SAM_PACKAGED_TEMPLATE_PATH \
+  --stack-name $SAM_S3_BUCKET \
+  --capabilities CAPABILITY_IAM
+
+aws s3 sync ${S3_SOURCE_DIR}/ s3://${S3_BUCKET}/nuxt --delete

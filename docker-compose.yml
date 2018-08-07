@@ -9,6 +9,7 @@ services:
       - 3000:3000
     volumes:
       - ./:/app
+    env_file: .env
     environment:
       - HOST=0.0.0.0
     command: ['./bin/dev']
