@@ -18,25 +18,12 @@ services:
     ports: []
     volumes:
       - ./client:/app
+    env_file: .env
     environment:
       - HOST=0.0.0.0
       - API_HOST=0.0.0.0
       - API_PORT=3000
     command: ["yarn", "dev"]
-    stdin_open: true
-    tty: true
-
-  api:
-    container_name: api
-    build:
-      context: ./api
-      dockerfile: Dockerfile
-    ports: []
-    volumes:
-      - ./api:/app
-    env_file: .env
-    environment: []
-    command: ["npm", "run", "dev"]
     stdin_open: true
     tty: true
 

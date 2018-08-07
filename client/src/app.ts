@@ -1,6 +1,7 @@
 import express from 'express'
 import { Nuxt, Builder } from 'nuxt'
 import config from '../nuxt.config'
+import api from './api'
 
 declare var __DEV__: boolean;
 
@@ -16,6 +17,7 @@ if (__DEV__) {
 
 const app = express()
 
+app.use('/api', api)
 app.use(nuxt.render)
 
 export default app

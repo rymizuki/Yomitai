@@ -11,8 +11,4 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use(router)
 
-app.listen(3000, () => {
-  console.log('listen app server on 3000')
-})
-
 export default app

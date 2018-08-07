@@ -7,11 +7,11 @@ import { SeriesRepository } from './infra/repositories/series';
 
 const router = express.Router()
 
-router.get('/api/', (_req, res) => {
+router.get('/', (_req, res) => {
   res.json({ message: 'hello world'})
 })
 
-router.get('/api/books', async (req, res) => {
+router.get('/books', async (req, res) => {
   const { field, keyword, period } = req.query
   console.log('book', field, keyword, period)
 
@@ -32,7 +32,7 @@ router.get('/api/books', async (req, res) => {
   }
 })
 
-router.post('/api/series', async (req, res) => {
+router.post('/series', async (req, res) => {
   const { book } = req.body
 
   console.log('body', book)
@@ -51,7 +51,7 @@ router.post('/api/series', async (req, res) => {
   }
 })
 
-router.get('/api/series', async (_req, res) => {
+router.get('/series', async (_req, res) => {
   try {
     const repos = new SeriesRepository()
     const rows = await repos.search()

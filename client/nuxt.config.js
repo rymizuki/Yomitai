@@ -50,11 +50,10 @@ module.exports = {
           exclude: /(node_modules)/
         })
       }
-    }
+    },
   },
 
   axios: {
-    baseURL: 'http://api:3000/',
     browserBaseURL: '/',
   },
 }
