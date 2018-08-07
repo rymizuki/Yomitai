@@ -1,33 +1,16 @@
 version: '3'
 
 services:
-  gateway:
-    container_name: yomitai_gateway
+  app:
     build:
-      context: ./gateway
+      context: .
       dockerfile: Dockerfile
     ports:
-      - 50300:80
-    restart: always
-
-  client:
-    container_name: client
-    build:
-      context: ./client
-      dockerfile: Dockerfile
-    ports: []
+      - 3000:3000
     volumes:
-      - ./client:/app
-    env_file: .env
+      - ./:/app
     environment:
       - HOST=0.0.0.0
-      - API_HOST=0.0.0.0
-      - API_PORT=3000
-    command: ["yarn", "dev"]
+    command: ['./bin/dev']
     stdin_open: true
     tty: true
-
-networks:
-  default:
-    external:
-      name: yomitai
