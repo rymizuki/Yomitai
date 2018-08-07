@@ -1,4 +1,4 @@
-FROM node:10.3.0-alpine
+FROM node:8.10.0-alpine
 
 RUN apk update \
  && apk --no-cache --update add tzdata \
@@ -9,9 +9,9 @@ RUN apk update \
 WORKDIR /app
 
 COPY ./package.json       /app/package.json
-COPY ./package-lock.json  /app/package-lock.json
+COPY ./yarn.lock          /app/yarn.lock
 
-RUN npm install
+RUN yarn install
 
 COPY ./src/nuxt/assets          /app/src/nuxt/assets
 COPY ./src/nuxt/components      /app/src/nuxt/components
@@ -27,8 +27,6 @@ COPY ./nuxt.config.js           /app/nuxt.config.js
 COPY ./.eslintrc.js             /app/.eslintrc.js
 COPY ./tsconfig.json            /app/tsconfig.json
 
-RUN npm run build
-
-CMD ["npm", "run", "dev"]
+CMD ["yarn", "dev"]
 
 EXPOSE 3000
