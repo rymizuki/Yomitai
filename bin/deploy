@@ -4,7 +4,7 @@ SAM_SOURCE_DIR=app
 SAM_TEMPLATE_PATH=template.yml
 SAM_PACKAGED_TEMPLATE_PATH=template-packaged.yml
 SAM_S3_BUCKET=yomitai-function
-S3_BUCKET=yomitai-static
+S3_BUCKET=yomitai-asset
 S3_SOURCE_DIR=${SAM_SOURCE_DIR}/build/nuxt/dist
 
 sam validate

@@ -9,58 +9,60 @@ Globals:
 
 Resources:
 
-    YomitaiAssetBucket:
-        Type: AWS::S3::Bucket
-        Properties:
-            AccessControl: PublicRead
-            BucketName: yomitai-function
+  # Static resource
+  YomitaiAssetBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      AccessControl: PublicRead
+      BucketName: yomitai-asset
 
-    YomitaiAssetBucketPolicy:
-        Type: AWS::S3::BucketPolicy
-        Properties:
-            Bucket: !Ref "YomitaiAssetBucket"
-            PolicyDocument:
-                Id: PublicRead
-                Version: '2012-10-17'
-                Statement:
-                    -
-                        Sid: ReadAccess
-                        Action:
-                            - s3:GetObject
-                        Effect: Allow
-                        Resource: !Sub "arn:aws:s3:::${YomitaiAssetBucket}/*"
-                        Principal: '*'
+  YomitaiAssetPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref "YomitaiAssetBucket"
+      PolicyDocument:
+        Id: PublicRead
+        Version: '2012-10-17'
+        Statement:
+          -
+            Sid: ReadAccess
+            Action:
+              - s3:GetObject
+            Effect: Allow
+            Resource: !Sub "arn:aws:s3:::${YomitaiAssetBucket}/*"
+            Principal: '*'
 
-    YomitaiFunction:
-        Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
-        Properties:
-            CodeUri: app/
-            Handler: build/server.render
-            Runtime: nodejs8.10
-            Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
-                Variables:
-                    S3_BUCKET: yomitai-function
-            Events:
-                Root:
-                    Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
-                    Properties:
-                        Path: /
-                        Method: get
-                Proxy:
-                    Type: Api
-                    Properties:
-                        Path: /{proxy+}
-                        Method: get
+  # Lambda functions
+  YomitaiFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: app/
+      Handler: build/server.render
+      Runtime: nodejs8.10
+      Environment: # More info about Env Vars: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#environment-object
+        Variables:
+          S3_BUCKET: yomitai-function
+      Events:
+        Root:
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
+          Properties:
+            Path: /
+            Method: get
+        Proxy:
+          Type: Api
+          Properties:
+            Path: /{proxy+}
+            Method: get
 
 Outputs:
-    Assets:
-      Description: "URL for website hosted on s3"
-      Value: !GetAtt YomitaiAssetBucket.Arn
+  YomitaiApi:
+    Description: "API Gateway endpoint URL for Prod stage for Yomitai function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
 
-    HelloWorldFunction:
-      Description: "Yomitai Lambda Function ARN"
-      Value: !GetAtt YomitaiFunction.Arn
+  YomitaiFunction:
+    Description: "Yomitai Lambda Function ARN"
+    Value: !GetAtt YomitaiFunction.Arn
 
-    HelloWorldFunctionIamRole:
-      Description: "Implicit IAM Role created for Yomitai function"
-      Value: !GetAtt YomitaiFunctionRole.Arn
+  YomitaiFunctionIamRole:
+    Description: "Implicit IAM Role created for Yomitai function"
+    Value: !GetAtt YomitaiFunctionRole.Arn
