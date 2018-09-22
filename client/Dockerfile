@@ -1,6 +1,7 @@
 FROM node:10.3.0-alpine
 
 RUN apk update \
+ && apk --no-cache add ncurses \
  && apk --no-cache --update add tzdata \
  && cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
  && apk del tzdata \
